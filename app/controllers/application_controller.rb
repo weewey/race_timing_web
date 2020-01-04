@@ -11,11 +11,4 @@ class ApplicationController < ActionController::Base
     request.format.json?
   end
 
-  def invalid_auth_token
-    respond_to do |format|
-      format.html { redirect_to sign_in_path, error: 'Login invalid or expired' }
-      format.json { head 401 }
-    end
-  end
-
 end

@@ -4,14 +4,14 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password:
-  host: localhost
-  port: 5432
+  database: <%= ENV['DB_NAME'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 development:
   <<: *default
-  database: race_timing_web_development
   #schema_search_path: myapp,sharedapp,public
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,

@@ -22,8 +22,10 @@ describe 'POST /api/login', type: :request do
   end
 
   context 'when login params are incorrect' do
+    let(:params) { {"api_user": {"email": "abcd@example.com", "password": "password"}}.to_json }
+
     it 'returns unathorized status' do
-      post url
+      post url, :params => params, :headers => headers
       expect(response.status).to eq 401
     end
   end
